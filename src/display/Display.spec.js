@@ -9,12 +9,20 @@ import 'jest-dom/extend-expect'
 });
 
 describe("<Display />", () => {
-  it("Display unlocked and open", () => {
+  it("Displays unlocked and open", () => {
     const component = render(<Display locked={false} closed={false} />);
     const unlocked = component.getByText("Unlocked");
     expect(unlocked).toHaveTextContent(/unlocked/i);
 
     const open = component.getByText("Open");
     expect(open).toHaveTextContent(/open/i);
+  });
+  it("Displays locked and closed", () => {
+    const component = render(<Display locked={false} closed={false} />);
+    const locked = component.getByText(/locked/i);
+    expect(locked).toHaveTextContent(/locked/i);
+
+    const closed = component.getByText(/locked/i);
+    expect(closed).toHaveTextContent(/locked/i);
   });
 });
