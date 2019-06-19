@@ -18,4 +18,17 @@ describe("<Controls />", () => {
     const close = component.getByText("Close Gate");
     expect(close).toHaveTextContent(/close gate/i);
   });
+  it("Displays unlock and open buttons", () => {
+    const component = render(
+      <Controls
+        locked={true}
+        closed={true}
+      />
+    );
+    const unlock = component.getByText("Unlock Gate");
+    expect(unlock).toHaveTextContent(/unlock gate/i);
+
+    const open = component.getByText("Open Gate");
+    expect(open).toHaveTextContent(/open gate/i);
+  });
 });
